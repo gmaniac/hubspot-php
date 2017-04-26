@@ -80,7 +80,7 @@ class Deals extends Resource
     }
 
     /**
-     * Returns all companies
+     * Returns all deals
      * @param array $params Array of optional parameters ['limit', 'offset', 'properties']
      * @return mixed
      */
