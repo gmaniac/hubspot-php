@@ -80,6 +80,20 @@ class Deals extends Resource
     }
 
     /**
+     * Returns all companies
+     * @param array $params Array of optional parameters ['limit', 'offset', 'properties']
+     * @return mixed
+     */
+    function all($params = [])
+    {
+        $endpoint = "https://api.hubapi.com/deals/v1/deal/paged";
+
+        $queryString = build_query_string($params);
+
+        return $this->client->request('get', $endpoint, [], $queryString);
+    }
+
+    /**
      * @param int $dealId
      * @param int|int[] $companyIds
      * @return mixed
@@ -120,7 +134,7 @@ class Deals extends Resource
 
         return $this->client->request('put', $endpoint, [], $queryString);
     }
-    
+
     /**
      * @param int $contactId
      * @return mixed
