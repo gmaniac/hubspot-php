@@ -99,9 +99,9 @@ class Client
             }
             return new Response($this->client->request($method, $url, $options));
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
-            return new Response(\GuzzleHttp\Psr7\str($e->getResponse()), $e->getCode(), $e);
+            throw new BadRequest(\GuzzleHttp\Psr7\str($e->getResponse()), $e->getCode(), $e);
         } catch (\Exception $e) {
-            return new Response($e->getMessage(), $e->getCode(), $e);
+            throw new BadRequest($e->getMessage(), $e->getCode(), $e);
         }
     }
 
